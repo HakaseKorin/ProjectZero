@@ -1,20 +1,10 @@
 package com.revature.models;
 
-public class Employee extends User implements IEmployee{
+import java.util.Date;
+
+public class Employee extends User{
     private int employeeId;
-
-    @Override
-    public void viewAccountInfo() {
-
-    }
-
-    @Override
-    public void viewAccountBalance() {
-
-    }
-
-    @Override
-    public void viewUserInfo() {
-
+    public Employee(String first, String last, Date dob) {
+        super(first, last, dob);
     }
 }

@@ -5,9 +5,11 @@ import java.util.List;
 
 public class Customer extends User{
     private int customerId;
-    private String first;
-    private String last;
     private List<Account> accountList = new ArrayList<>();
 
-    public void apply(){}
+    public Customer(String userName, String password) {
+        super(userName, password);
+    }
+
+    //public void apply(){}
 }
