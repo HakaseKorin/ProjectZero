@@ -8,6 +8,7 @@ public abstract class User {
     private String first;
     private String last;
     private Date dob;
+    private UserType type;
     //access privilege?
 
     public User(String userName, String password) {
