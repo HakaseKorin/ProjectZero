@@ -2,29 +2,37 @@ package com.revature.models;
 
 import com.revature.service.IAccount;
 
-public class Account implements IAccount {
+public class Account {
     private int id;
     private int customerId;
     private float balance;
-
 
     public Account(float balance, int customerId) {
         this.balance = balance;
         this.customerId = customerId;
     }
 
-    @Override
-    public void withdraw(Account account, float amount) {
-
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public void deposit(Account account, float amount) {
-
+    public void setId(int id) {
+        this.id = id;
     }
 
-    @Override
-    public void transfer(Account origin, Account destination) {
+    public int getCustomerId() {
+        return customerId;
+    }
 
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
     }
 }

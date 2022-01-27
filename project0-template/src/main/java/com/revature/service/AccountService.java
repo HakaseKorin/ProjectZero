@@ -10,16 +10,19 @@ public class AccountService implements IAccount {
 
     @Override
     public void withdraw(Account account, float amount) {
-
+        //case for overdrafting
+        account.setBalance(account.getBalance()-amount);
     }
 
     @Override
     public void deposit(Account account, float amount) {
-
+        account.setBalance(account.getBalance()+amount);
     }
 
     @Override
-    public void transfer(Account origin, Account destination) {
-
+    public void transfer(Account origin, Account destination, float amount) {
+        //check for when two accounts belong to their proper users
+        withdraw(origin,amount);
+        deposit(destination,amount);
     }
 }
