@@ -1,10 +1,11 @@
 package com.revature.service;
 
 import com.revature.models.Account;
+import com.revature.models.AccountType;
 
 public class AccountService implements IAccount {
-    public Account createNewAccount(float balance, int id){
-        Account account = new Account(balance, id);
+    public Account createNewAccount(float balance, int id, AccountType type){
+        Account account = new Account(balance, id, type);
         return account;
     }
 

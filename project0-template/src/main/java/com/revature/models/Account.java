@@ -5,11 +5,13 @@ import com.revature.service.IAccount;
 public class Account {
     private int id;
     private int customerId;
+    private AccountType type;
     private float balance;
 
-    public Account(float balance, int customerId) {
+    public Account(float balance, int customerId, AccountType type) {
         this.balance = balance;
         this.customerId = customerId;
+        this.type = type;
     }
 
     public int getId() {
