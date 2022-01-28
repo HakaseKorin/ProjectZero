@@ -4,8 +4,8 @@ import com.revature.models.Account;
 import com.revature.models.AccountType;
 
 public class AccountService implements IAccount {
-    public Account createNewAccount(float balance, int id, AccountType type){
-        Account account = new Account(balance, id, type);
+    public Account createNewAccount(float balance, int id, String bank, AccountType type){
+        Account account = new Account(balance, id, bank, type);
         return account;
     }
 
