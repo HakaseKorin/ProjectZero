@@ -5,12 +5,15 @@ import java.util.Date;
 public abstract class User {
     private String email;
     private String password;
+    private String first;
+    private String last;
     private UserType type;
 
-    public User(String email, String password, UserType type) {
+    public User() {}
+
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
-        this.type = type;
     }
 
     public String getEmail() {
@@ -27,6 +30,22 @@ public abstract class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFirst() {
+        return first;
+    }
+
+    public void setFirst(String first) {
+        this.first = first;
+    }
+
+    public String getLast() {
+        return last;
+    }
+
+    public void setLast(String last) {
+        this.last = last;
     }
 
     public UserType getType() {
