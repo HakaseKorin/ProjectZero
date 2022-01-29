@@ -1,4 +1,27 @@
 package com.revature.dao;
 
-public class CustomerDaoImpl {
+import com.revature.models.Customer;
+import com.revature.util.ConnectionUtil;
+import java.sql.*;
+
+
+public class CustomerDaoImpl implements CustomerDao{
+
+    @Override
+    public boolean createCustomer(Customer customer) {
+        String sql = "insert into \"user\" (email, password, type) values(?, crypt('?', gen_salt('md5') , 'customer')";
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)){
+
+            ps.setString(1, customer.getEmail());
+            ps.setString(2,customer.getPassword());
+
+            int rowsAffected = ps.executeUpdate();
+            if(rowsAffected == 1 )
+                return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
