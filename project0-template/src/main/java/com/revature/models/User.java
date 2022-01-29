@@ -5,21 +5,11 @@ import java.util.Date;
 public abstract class User {
     private String email;
     private String password;
-    private String first;
-    private String last;
     private UserType type;
-    //access privilege?
 
-    public User(String email, String password) {
+    public User(String email, String password, UserType type) {
         this.email = email;
         this.password = password;
-    }
-
-    public User(String email, String password, String first, String last, UserType type) {
-        this.email = email;
-        this.password = password;
-        this.first = first;
-        this.last = last;
         this.type = type;
     }
 
@@ -39,22 +29,6 @@ public abstract class User {
         this.password = password;
     }
 
-    public String getFirst() {
-        return first;
-    }
-
-    public void setFirst(String first) {
-        this.first = first;
-    }
-
-    public String getLast() {
-        return last;
-    }
-
-    public void setLast(String last) {
-        this.last = last;
-    }
-
     public UserType getType() {
         return type;
     }
@@ -63,3 +37,4 @@ public abstract class User {
         this.type = type;
     }
 }
+
