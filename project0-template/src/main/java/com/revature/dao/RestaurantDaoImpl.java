@@ -5,6 +5,7 @@ import com.revature.util.ConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RestaurantDaoImpl implements RestaurantDao {
@@ -26,5 +27,34 @@ public class RestaurantDaoImpl implements RestaurantDao {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public Restaurant getRestaurantById(int id) {
+        String sql = "select * from restaurant where id = ?";
+
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)){
+
+            ps.setInt(1,id);
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+                Restaurant restaurant = new Restaurant();
+                restaurant.setId(id);
+
+                restaurant.setName(rs.getString("name"));
+                restaurant.setAddress(rs.getString("address"));
+                restaurant.setPhone(rs.getString("phone"));
+
+                return restaurant;
+            }
+
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

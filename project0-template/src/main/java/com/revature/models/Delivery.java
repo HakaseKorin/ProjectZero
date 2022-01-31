@@ -51,6 +51,14 @@ public class Delivery {
         this.destinationAddress = destinationAddress;
     }
 
+    public boolean isPickedUp() {
+        return isPickedUp;
+    }
+
+    public boolean isDelivered() {
+        return isDelivered;
+    }
+
     public void pickUpOrder(){
         this.isPickedUp = true;
     }

@@ -4,16 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Restaurant {
+    private int id;
     private String name;
     private String address;
     private String phone;
     private List<MenuItem> menu;
+
+    public Restaurant() {
+    }
 
     public Restaurant(String name, String address, String phone) {
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.menu = new ArrayList<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
