@@ -1,14 +1,28 @@
 package com.revature.models;
 
 public class MenuItem {
+    private int id;
+    private int restaurantId;
     private String name;
     private float price;
     private String description;
 
-    public MenuItem(String name, float price, String description) {
+    public MenuItem() {
+    }
+
+    public MenuItem(int id, int restaurantId, String name, float price) {
+        this.id = id;
+        this.restaurantId = restaurantId;
         this.name = name;
         this.price = price;
-        this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
