@@ -3,6 +3,7 @@ package com.revature.models;
 import java.util.Date;
 
 public abstract class User {
+    private int userId;
     private String email;
     private String password;
     private String first;

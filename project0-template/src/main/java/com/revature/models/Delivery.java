@@ -3,15 +3,15 @@ package com.revature.models;
 import java.util.List;
 
 public class Delivery {
-    private int driverId;
+    private Driver driver;
     private List<Order> order;
     private String restaurantAddress;
     private String destinationAddress;
     private boolean isPickedUp;
     private boolean isDelivered;
 
-    public Delivery(int driverId, List<Order> order, String restaurantAddress, String destinationAddress) {
-        this.driverId = driverId;
+    public Delivery(Driver driver, List<Order> order, String restaurantAddress, String destinationAddress) {
+        this.driver = driver;
         this.order = order;
         this.restaurantAddress = restaurantAddress;
         this.destinationAddress = destinationAddress;
@@ -19,12 +19,12 @@ public class Delivery {
         this.isDelivered = false;
     }
 
-    public int getDriverId() {
-        return driverId;
+    public Driver getDriver() {
+        return driver;
     }
 
-    public void setDriverId(int driverId) {
-        this.driverId = driverId;
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 
     public List<Order> getOrder() {

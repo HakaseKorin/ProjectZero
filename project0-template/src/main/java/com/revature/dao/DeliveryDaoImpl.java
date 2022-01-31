@@ -1,17 +1,21 @@
 package com.revature.dao;
 
 import com.revature.models.Customer;
+import com.revature.models.Driver;
 import com.revature.models.Order;
 import com.revature.util.ConnectionUtil;
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
-
-public class CustomerDaoImpl implements CustomerDao{
-
+public class DeliveryDaoImpl implements DeliveryDao{
     @Override
-    public boolean createCustomer(Customer customer) {
-        String sql = "insert into \"user\" (email, password, type) values(?, crypt('?', gen_salt('md5') , 'customer')";
+    public boolean createDelivery(Customer customer, Driver driver, String address) {
+        String sql = "";
+
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement ps = c.prepareStatement(sql)){
 
@@ -24,12 +28,8 @@ public class CustomerDaoImpl implements CustomerDao{
         }catch(SQLException e){
             e.printStackTrace();
         }
-        return false;
-    }
 
-    @Override
-    public List<Order> getCustomerOrderById(int customerId, Date orderDate) {
-        return null;
+        return false;
     }
 
 }
