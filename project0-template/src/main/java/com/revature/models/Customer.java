@@ -6,6 +6,9 @@ import java.util.List;
 public class Customer extends User{
     private List<Order> cart;
 
+    public Customer() {
+    }
+
     public Customer(String email, String password) {
         super(email, password);
         this.setType(UserType.CUSTOMER);

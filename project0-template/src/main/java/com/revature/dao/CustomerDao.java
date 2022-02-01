@@ -9,5 +9,4 @@ import java.util.List;
 public interface CustomerDao {
 
     boolean createCustomer(Customer customer);
-    List<Order> getCustomerOrderById(int customerId, Date orderDate);
 }

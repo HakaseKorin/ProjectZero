@@ -5,6 +5,7 @@ import com.revature.dao.CustomerDaoImpl;
 import com.revature.models.Customer;
 import com.revature.models.Order;
 
+@Deprecated
 public class CustomerService {
 
     private CustomerDao customerDao = new CustomerDaoImpl();

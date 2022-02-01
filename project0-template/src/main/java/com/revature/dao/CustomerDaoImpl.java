@@ -26,10 +26,4 @@ public class CustomerDaoImpl implements CustomerDao{
         }
         return false;
     }
-
-    @Override
-    public List<Order> getCustomerOrderById(int customerId, Date orderDate) {
-        return null;
-    }
-
 }

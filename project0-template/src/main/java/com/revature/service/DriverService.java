@@ -4,6 +4,7 @@ import com.revature.dao.DriverDao;
 import com.revature.dao.DriverDaoImpl;
 import com.revature.models.Driver;
 
+@Deprecated
 public class DriverService {
 
     private DriverDao driverDao = new DriverDaoImpl();

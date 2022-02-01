@@ -4,6 +4,7 @@ import com.revature.dao.AdminDao;
 import com.revature.dao.AdminDaoImpl;
 import com.revature.models.*;
 
+@Deprecated
 public class AdminService {
 
     private AdminDao adminDao = new AdminDaoImpl();
