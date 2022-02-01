@@ -26,12 +26,17 @@ public class DeliveryDaoImpl implements DeliveryDao{
             ps.setInt(1, orderId);
 
             List<Driver> drivers = driverDao.getAllDriver();
-            //grab its address and then compare against all drivers in the db for the closest driver
+            Driver avaliableDriver = null;
+            for(Driver d : drivers)
+                if(d.isAvaliable()){
+                    avaliableDriver = d;
+                    break;
+                }
 
-            //gettined nearest driver
-            int nearestDriverId = 0;
+            if(avaliableDriver == null)
+                return false;
 
-            ps.setInt(2, nearestDriverId);
+            ps.setInt(2, avaliableDriver.getUserId());
             ps.setBoolean(3, delivery.isPickedUp());
             ps.setBoolean(4, delivery.isDelivered());
 

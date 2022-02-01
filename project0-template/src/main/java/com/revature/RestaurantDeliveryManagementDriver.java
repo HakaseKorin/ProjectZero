@@ -7,6 +7,7 @@ import io.javalin.Javalin;
 public class RestaurantDeliveryManagementDriver {
 
     public static void main(String[] args){
+
         Javalin app = Javalin.create().start();
 
         UserService userService = new UserService();

@@ -8,4 +8,6 @@ public interface DriverDao {
 
     boolean createDriver(Driver driver);
     List<Driver> getAllDriver();
+    boolean notAvaliable(int id);
+    boolean isAvaliable(int id);
 }

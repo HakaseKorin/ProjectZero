@@ -40,4 +40,8 @@ public class UserService {
     public User getById(int id){return userDao.getUserById(id);}
 
     public List<Driver> getAllDriver(){return driverDao.getAllDriver();}
+
+    public User getByEmailAndPassword(String email, String password){
+        return userDao.getUserByEmailAndPassword(email, password);
+    }
 }

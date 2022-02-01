@@ -2,6 +2,7 @@ package com.revature.models;
 
 public class Driver extends User {
     private String address;
+    private boolean isAvaliable;
 
     public Driver() {
     }
@@ -12,6 +13,14 @@ public class Driver extends User {
         this.setLast(last);
         this.setType(UserType.DRIVER);
         this.address = address;
+    }
+
+    public boolean isAvaliable() {
+        return isAvaliable;
+    }
+
+    public void setAvaliable(boolean avaliable) {
+        isAvaliable = avaliable;
     }
 
     public String getAddress() {

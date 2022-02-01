@@ -17,8 +17,8 @@ public class DriverDaoImpl implements DriverDao{
 
     @Override
     public boolean createDriver(Driver driver) {
-        String sql =    "insert into \"user\" (email, password, type, first, last, address) " +
-                        "values(?, crypt('?', gen_salt('md5')) , 'driver', ? , ?, ?)";
+        String sql =    "insert into \"user\" (email, password, type, first, last, address, is_avaliable) " +
+                        "values(?, crypt('?', gen_salt('md5')) , 'driver', ? , ?, ?, ?)";
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement ps = c.prepareStatement(sql)){
 
@@ -27,6 +27,7 @@ public class DriverDaoImpl implements DriverDao{
             ps.setString(3, driver.getFirst());
             ps.setString(4, driver.getLast());
             ps.setString(5, driver.getAddress());
+            ps.setBoolean(6, true);
 
             int rowsAffected = ps.executeUpdate();
             if(rowsAffected == 1 )
@@ -56,6 +57,7 @@ public class DriverDaoImpl implements DriverDao{
                 driver.setEmail(rs.getString("email"));
                 driver.setAddress(rs.getString("address"));
                 driver.setType(UserType.DRIVER);
+                driver.setAvaliable(rs.getBoolean("is_avaliable"));
 
                 driverList.add(driver);
             }
@@ -66,5 +68,41 @@ public class DriverDaoImpl implements DriverDao{
         }
 
         return null;
+    }
+
+    @Override
+    public boolean notAvaliable(int id) {
+        String sql = "update \"user\" set is_avaliable = false where id = ?;";
+
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)){
+
+            ps.setInt(1,id);
+
+            int rowsAffected = ps.executeUpdate();
+            if(rowsAffected == 1 )
+                return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isAvaliable(int id) {
+        String sql = "update \"user\" set is_avaliable = true where id = ?;";
+
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)){
+
+            ps.setInt(1,id);
+
+            int rowsAffected = ps.executeUpdate();
+            if(rowsAffected == 1 )
+                return true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
     }
 }
