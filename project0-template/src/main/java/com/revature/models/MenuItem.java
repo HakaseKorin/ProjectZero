@@ -15,6 +15,7 @@ public class MenuItem {
         this.restaurantId = restaurantId;
         this.name = name;
         this.price = price;
+
     }
 
     public int getId() {
@@ -23,6 +24,14 @@ public class MenuItem {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public String getName() {

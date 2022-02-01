@@ -7,10 +7,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class OrderDaoImpl implements OrderDao{
 
     //check later
+    private MenuItemDao menuItemDao = new MenuItemDaoImpl();
 
     @Override
     public int createOrderId(int customerId) {
@@ -54,6 +56,9 @@ public class OrderDaoImpl implements OrderDao{
             PreparedStatement ps = c.prepareStatement(sql)){
 
             ps.setInt(1,order.getId());
+
+            
+
             ps.setInt(2,order.getItem().getId());
             ps.setInt(3,order.getQuantity());
 
@@ -62,5 +67,21 @@ public class OrderDaoImpl implements OrderDao{
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public List<Order> getOrderById(int id) {
+        String sql = "";
+
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)){
+
+
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
