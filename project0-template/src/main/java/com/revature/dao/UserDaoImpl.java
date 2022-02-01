@@ -42,4 +42,33 @@ public class UserDaoImpl implements UserDao{
         }
         return null;
     }
+
+    @Override
+    public User getUserById(int id) {
+        String sql = "select * from \"user\" where id = ?";
+
+        try(Connection c = ConnectionUtil.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)){
+
+            ps.setInt(1,id);
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+                User user = new Customer();
+
+                user.setUserId(rs.getInt("id"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setFirst(rs.getString("first"));
+                user.setLast(rs.getString("last"));
+                user.setType(UserType.valueOf(rs.getString("type")));
+
+                return user;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

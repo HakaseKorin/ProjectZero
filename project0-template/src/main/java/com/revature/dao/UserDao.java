@@ -4,4 +4,5 @@ import com.revature.models.User;
 
 public interface UserDao {
     User getUserByEmailAndPassword(String email, String password);
+    User getUserById(int id);
 }

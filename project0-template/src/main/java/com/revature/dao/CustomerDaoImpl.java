@@ -11,7 +11,7 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public boolean createCustomer(Customer customer) {
-        String sql = "insert into \"user\" (email, password, type) values(?, crypt('?', gen_salt('md5') , 'customer')";
+        String sql = "insert into \"user\" (email, password, type) values(?, crypt(?, gen_salt('md5')), 'customer')";
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement ps = c.prepareStatement(sql)){
 

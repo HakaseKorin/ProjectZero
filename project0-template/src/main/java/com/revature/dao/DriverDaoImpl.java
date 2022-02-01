@@ -59,7 +59,6 @@ public class DriverDaoImpl implements DriverDao{
 
                 driverList.add(driver);
             }
-
             return driverList;
 
         }catch(SQLException e){
