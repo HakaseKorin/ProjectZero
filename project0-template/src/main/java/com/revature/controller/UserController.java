@@ -32,7 +32,7 @@ public class UserController {
         logger.log("INFO", "all users were retrieved");
     }
 
-    public void handleGetOne(Context ctx){
+    public void handleByUserId(Context ctx){
         String idParam = ctx.pathParam("id");
         int id = Integer.parseInt(idParam);
         User user = userService.getById(id);
@@ -57,4 +57,9 @@ public class UserController {
         }
     }
 
+    public void handleDeleteUser(Context ctx) {
+        String idParam = ctx.pathParam("id");
+        int id = Integer.parseInt(idParam);
+        userService.deleteUserById(id);
+    }
 }

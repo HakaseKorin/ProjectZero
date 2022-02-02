@@ -24,7 +24,6 @@ public class AccountService{
     }
 
     public void transfer(Account origin, Account destination, float amount) {
-        //check for when two accounts belong to their proper users
         withdraw(origin,amount);
         deposit(destination,amount);
     }

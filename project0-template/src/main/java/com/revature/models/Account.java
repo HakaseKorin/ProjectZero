@@ -39,4 +39,12 @@ public class Account {
     public void setBalance(float balance) {
         this.balance = balance;
     }
+
+    public AccountType getType() {
+        return type;
+    }
+
+    public void setType(AccountType type) {
+        this.type = type;
+    }
 }

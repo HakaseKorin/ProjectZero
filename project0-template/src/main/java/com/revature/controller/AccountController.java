@@ -11,17 +11,17 @@ public class AccountController {
     LoggingSingleton logger = LoggingSingleton.getLogger();
     private AccountService accountService = new AccountService();
 
-    public void handleGetOne(Context ctx) {
+    public void handleByAccountId(Context ctx) {
         String idParam = ctx.pathParam("id");
         int id = Integer.parseInt(idParam);
-        Account account= accountService.getById(id);
+        Account account = accountService.getById(id);
         ctx.json(account);
         logger.log("INFO", "an Account's info has been retrieved");
     }
 
     public void handleWithdraw(Context ctx) {
         String withdrawAmount = ctx.formParam("amount");
-        String idParam = ctx.pathParam("id");
+        String idParam = ctx.formParam("id");
         int id = Integer.parseInt(idParam);
         float amount = Float.parseFloat(withdrawAmount);
         Account account = accountService.getById(id);
@@ -40,7 +40,7 @@ public class AccountController {
 
     public void handleDeposit(Context ctx) {
         String depositAmount = ctx.formParam("amount");
-        String idParam = ctx.pathParam("id");
+        String idParam = ctx.formParam("id");
         int id = Integer.parseInt(idParam);
         float amount = Float.parseFloat(depositAmount);
         Account account = accountService.getById(id);

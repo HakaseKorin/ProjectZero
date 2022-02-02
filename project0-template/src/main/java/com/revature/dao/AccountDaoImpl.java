@@ -1,6 +1,8 @@
 package com.revature.dao;
 
 import com.revature.models.Account;
+import com.revature.models.AccountType;
+import com.revature.models.UserType;
 import com.revature.util.ConnectionUtil;
 
 import java.sql.Connection;
@@ -27,6 +29,10 @@ public class AccountDaoImpl implements AccountDao{
                 account.setCustomerId(rs.getInt("customer_id"));
                 account.setBalance(rs.getFloat("balance"));
 
+                int typeOrdinal = rs.getInt("type");
+                AccountType[] types = AccountType.values();
+                account.setType(types[typeOrdinal]);
+
                 return account;
             }
 
@@ -39,11 +45,14 @@ public class AccountDaoImpl implements AccountDao{
 
     @Override
     public boolean createAccount(Account account) {
-        String sql = "";
+        String sql = "insert into account(customer_id, type, balance) values (?, ?, ?)";
 
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement ps = c.prepareStatement(sql)){
 
+            ps.setInt(1,account.getCustomerId());
+            ps.setInt(2,account.getType().ordinal());
+            ps.setFloat(3, account.getBalance());
 
             int rowsAffected = ps.executeUpdate();
             if(rowsAffected == 1)

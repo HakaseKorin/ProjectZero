@@ -47,4 +47,8 @@ public class UserService {
     public boolean update(User updatedUser) {
         return userDao.update(updatedUser);
     }
+
+    public boolean deleteUserById(int id) {
+        return userDao.deleteById(id);
+    }
 }

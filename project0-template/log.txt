@@ -1,0 +1,18 @@
+INFO- 2022-02-02T02:52:47.795 - all users were retrieved
+INFO- 2022-02-02T02:54:51.619 - all users were retrieved
+INFO- 2022-02-02T02:55:59.105 - one user was retrieved
+INFO- 2022-02-02T04:04:05.670 - all users were retrieved
+INFO- 2022-02-02T04:06:51.592 - one user was retrieved
+INFO- 2022-02-02T04:06:58.085 - one user was retrieved
+INFO- 2022-02-02T04:07:20.973 - one user was retrieved
+INFO- 2022-02-02T04:08:24.818 - one user was retrieved
+WARN- 2022-02-02T04:16:51.417 - a failed login attempt was made
+WARN- 2022-02-02T04:19:47.514 - a failed login attempt was made
+WARN- 2022-02-02T04:21:56.844 - a failed login attempt was made
+WARN- 2022-02-02T04:28:21.942 - a failed login attempt was made
+WARN- 2022-02-02T04:28:30.670 - a failed login attempt was made
+INFO- 2022-02-02T04:29:00.743 - one user was retrieved
+WARN- 2022-02-02T04:29:34.452 - a failed login attempt was made
+WARN- 2022-02-02T04:30:04.978 - a failed login attempt was made
+WARN- 2022-02-02T04:30:32.047 - a failed login attempt was made
+INFO- 2022-02-02T04:32:25.276 - successful login

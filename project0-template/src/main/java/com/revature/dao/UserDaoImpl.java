@@ -57,7 +57,7 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public User getByEmailAndPassword(String email, String password) {
-        String sql = "select * from person where email = ? and password = ?";
+        String sql = "select * from \"user\" where email = ? and \"password\" = crypt(?, password);";
 
         try(Connection c = ConnectionUtil.getConnection();
             PreparedStatement ps = c.prepareStatement(sql)){
@@ -84,7 +84,6 @@ public class UserDaoImpl implements UserDao{
         }catch (SQLException e){
             e.printStackTrace();
         }
-
         return null;
     }
 
@@ -169,6 +168,11 @@ public class UserDaoImpl implements UserDao{
         }catch (SQLException e){
             e.printStackTrace();
         }
+        return false;
+    }
+
+    @Override
+    public boolean deleteById(int id) {
         return false;
     }
 }
