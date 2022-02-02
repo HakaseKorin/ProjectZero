@@ -21,8 +21,14 @@ public class JavalinApp {
         path("{id}", ()->{
             get(userController::handleGetOne);
             put(userController::handleUpdate);
+        });
+        path("accounts", ()->{
             get(accountController::handleGetOne);
+        });
+        path("withdraw", ()->{
             put(accountController::handleWithdraw);
+        });
+        path("deposit", ()->{
             put(accountController::handleDeposit);
         });
         path("login", ()->{
