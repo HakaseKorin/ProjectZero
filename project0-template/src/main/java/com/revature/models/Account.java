@@ -1,7 +1,5 @@
 package com.revature.models;
 
-import com.revature.service.IAccount;
-
 public class Account {
     private int id;
     private int customerId;

@@ -6,8 +6,8 @@ import com.revature.models.Customer;
 import com.revature.models.UserType;
 
 public class CustomerService {
-    public Customer createNewCustomer(String user, String pass){
-        Customer customer = new Customer(user, pass);
+    public Customer createNewCustomer(String email, String password, String first, String last, UserType type){
+        Customer customer = new Customer(email, password, first, last, type);
         return customer;
     }
 }

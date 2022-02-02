@@ -7,12 +7,19 @@ public class Customer extends User{
     private int id;
     private List<Account> accountList = new ArrayList<>();
 
+    public Customer() {
+    }
+
     public Customer(String user, String pass) {
         super(user, pass);
         this.setType(UserType.CUSTOMER);
     }
 
-    public Customer(int id, List<Account> account, String first, String last, String email, String pass,UserType type){
+    public Customer(String email, String password, String first, String last, UserType type) {
+        super(email, password, first, last, type);
+    }
+
+    public Customer(int id, List<Account> account, String first, String last, String email, String pass, UserType type){
         super(email, pass, first, last, type);
         this.setId(id);
         this.setAccountList(account);

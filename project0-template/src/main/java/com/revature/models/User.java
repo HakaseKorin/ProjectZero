@@ -3,12 +3,15 @@ package com.revature.models;
 import java.util.Date;
 
 public abstract class User {
+    private int id;
     private String email;
     private String password;
     private String first;
     private String last;
     private UserType type;
-    //access privilege?
+
+    public User() {
+    }
 
     public User(String email, String password) {
         this.email = email;
@@ -21,6 +24,14 @@ public abstract class User {
         this.first = first;
         this.last = last;
         this.type = type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
