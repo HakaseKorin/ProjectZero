@@ -26,7 +26,25 @@ public class UserController {
         ctx.json(users);
     }
 
-    public void handleCustomerMakesAccount(){
-
+    public void handleGetOne(Context ctx){
+        String idParam = ctx.pathParam("id");
+        int id = Integer.parseInt(idParam);
+        User user = userService.getById(id);
+        ctx.json(user);
     }
+
+    public void handleUpdate(Context ctx){
+        String idParam = ctx.pathParam("id");
+        User updatedUser = ctx.bodyAsClass(Customer.class);
+        int idToUpdate = Integer.parseInt(idParam);
+        updatedUser.setId(idToUpdate);
+
+        boolean success = userService.update(updatedUser);
+
+        if(success)
+            ctx.status(201);
+        else
+            ctx.status(400);
+    }
+
 }

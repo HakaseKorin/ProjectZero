@@ -1,9 +1,14 @@
 package com.revature.service;
 
+import com.revature.dao.AccountDao;
+import com.revature.dao.AccountDaoImpl;
 import com.revature.models.Account;
 import com.revature.models.AccountType;
 
 public class AccountService{
+
+    private AccountDao accountDao = new AccountDaoImpl();
+
     public Account createNewAccount(float balance, int id, AccountType type){
         Account account = new Account(balance, id, type);
         return account;
@@ -22,5 +27,13 @@ public class AccountService{
         //check for when two accounts belong to their proper users
         withdraw(origin,amount);
         deposit(destination,amount);
+    }
+
+    public Account getById(int id) {
+        return accountDao.getById(id);
+    }
+
+    public boolean update(Account account) {
+        return accountDao.update(account);
     }
 }

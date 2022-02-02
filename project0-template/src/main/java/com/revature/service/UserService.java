@@ -35,4 +35,16 @@ public class UserService {
     public List<User> getAll() {
         return userDao.getAll();
     }
+
+    public User getByUserAndPass(String username, String password) {
+        return userDao.getByEmailAndPassword(username, password);
+    }
+
+    public User getById(int id) {
+        return userDao.getById(id);
+    }
+
+    public boolean update(User updatedUser) {
+        return userDao.update(updatedUser);
+    }
 }

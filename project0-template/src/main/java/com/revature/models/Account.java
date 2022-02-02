@@ -12,6 +12,10 @@ public class Account {
         this.type = type;
     }
 
+    public Account() {
+
+    }
+
     public int getId() {
         return id;
     }

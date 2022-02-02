@@ -8,4 +8,6 @@ public interface UserDao {
     boolean createUser(User user);
     User getByEmailAndPassword(String email, String password);
     List<User> getAll();
+    User getById(int id);
+    boolean update(User updatedUser);
 }
