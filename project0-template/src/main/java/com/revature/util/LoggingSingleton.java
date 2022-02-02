@@ -28,9 +28,10 @@ public class LoggingSingleton {
         return logger;
     }
 
-    public void debug(String message){
+    public void log(String logType, String message){
         sb = new StringBuffer();
-        sb.append(("DEBUG: "));
+        sb.append(logType);
+        sb.append((": "));
         sb.append(LocalDateTime.now());
         sb.append((" - "));
         sb.append(message);

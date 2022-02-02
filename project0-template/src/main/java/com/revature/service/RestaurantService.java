@@ -14,12 +14,5 @@ public class RestaurantService {
         return restaurantDao.createRestaurant(restaurant);
     }
 
-    public void addToMenu(Restaurant restaurant, MenuItem menuItem){}
-
-    public void updateMenu(Restaurant restaurant, MenuItem menuItem){}
-
-    public void removeFromMenu(Restaurant restaurant, MenuItem menuItem){}
-
-    public void updateRestaurant(Restaurant restaurant){}
 
 }

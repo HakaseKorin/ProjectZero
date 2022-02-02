@@ -2,11 +2,15 @@ package com.revature;
 
 import com.revature.models.Customer;
 import com.revature.service.UserService;
+import com.revature.util.LoggingSingleton;
 import io.javalin.Javalin;
 
 public class RestaurantDeliveryManagementDriver {
 
     public static void main(String[] args){
+        LoggingSingleton logger = LoggingSingleton.getLogger();
+        //logger.setWriteToFile(true);
+
 
         Javalin app = Javalin.create().start();
 
