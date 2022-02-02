@@ -31,6 +31,7 @@ public class JavalinApp {
             post(authController::authenticateLogin);
         });
         path("accounts", ()->{
+            before(authController::authorizeAdminToken);
             get(accountController::handleByAccountId);
         });
         path("withdraw", ()->{

@@ -16,3 +16,13 @@ WARN- 2022-02-02T04:29:34.452 - a failed login attempt was made
 WARN- 2022-02-02T04:30:04.978 - a failed login attempt was made
 WARN- 2022-02-02T04:30:32.047 - a failed login attempt was made
 INFO- 2022-02-02T04:32:25.276 - successful login
+INFO- 2022-02-02T05:33:24.884 - successful login
+INFO- 2022-02-02T08:06:43.145 - successful login
+INFO- 2022-02-02T08:07:12.741 - all users were retrieved
+INFO- 2022-02-02T08:08:20.292 - one user was retrieved
+INFO- 2022-02-02T08:08:23.702 - one user was retrieved
+INFO- 2022-02-02T08:08:35.491 - one user was retrieved
+INFO- 2022-02-02T08:16:38.186 - one user was retrieved
+INFO- 2022-02-02T08:17:46.112 - user has been created
+INFO- 2022-02-02T09:01:59.879 - one user was retrieved
+INFO- 2022-02-02T09:08:11 - all users were retrieved
