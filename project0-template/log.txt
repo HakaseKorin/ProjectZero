@@ -26,3 +26,10 @@ INFO- 2022-02-02T08:16:38.186 - one user was retrieved
 INFO- 2022-02-02T08:17:46.112 - user has been created
 INFO- 2022-02-02T09:01:59.879 - one user was retrieved
 INFO- 2022-02-02T09:08:11 - all users were retrieved
+INFO- 2022-02-02T10:01:58.866 - all users were retrieved
+INFO- 2022-02-02T10:02:34.240 - one user was retrieved
+INFO- 2022-02-02T10:02:49.581 - one user was retrieved
+INFO- 2022-02-02T10:03:10.261 - user has been created
+INFO- 2022-02-02T10:04:25.864 - successful login
+INFO- 2022-02-02T10:04:41.622 - successful login
+INFO- 2022-02-02T10:04:52.243 - successful login
