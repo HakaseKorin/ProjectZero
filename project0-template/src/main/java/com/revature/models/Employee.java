@@ -1,7 +1,6 @@
 package com.revature.models;
 
 public class Employee extends User{
-    private int id;
 
     public Employee(String first, String last) {
         super(first, last);
@@ -14,13 +13,5 @@ public class Employee extends User{
     public Employee(int id, String first, String last, String email, String pass, UserType type){
         super(email, pass, first, last, type);
         this.setId(id);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

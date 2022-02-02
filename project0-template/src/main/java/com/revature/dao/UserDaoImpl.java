@@ -5,10 +5,7 @@ import com.revature.models.User;
 import com.revature.models.UserType;
 import com.revature.util.ConnectionUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -26,7 +23,7 @@ public class UserDaoImpl implements UserDao{
                 ps.setString(2,user.getPassword());
                 ps.setString(3,user.getFirst());
                 ps.setString(4,user.getLast());
-                ps.setString(5,  "customer");
+                ps.setInt(5,user.getType().ordinal());
 
                 int rowsAffected = ps.executeUpdate();
                 if(rowsAffected == 1)
@@ -35,7 +32,6 @@ public class UserDaoImpl implements UserDao{
                 e.printStackTrace();
             }
         } else {
-            String sqlType = user.getType().ordinal() == 1 ? "employee" : "admin";
             String sql = "insert into \"user\" (email, \"password\", first, last, type) " +
                     "values (?, crypt(?, gen_salt('md5')), ?, ?, ?);";
 
@@ -46,7 +42,7 @@ public class UserDaoImpl implements UserDao{
                 ps.setString(2,"password");
                 ps.setString(3,user.getFirst());
                 ps.setString(4,user.getLast());
-                ps.setString(5,sqlType);
+                ps.setInt(5,user.getType().ordinal());
 
                 int rowsAffected = ps.executeUpdate();
                 if(rowsAffected == 1)
@@ -78,7 +74,10 @@ public class UserDaoImpl implements UserDao{
                 user.setPassword(rs.getString("password"));
                 user.setFirst(rs.getString("first"));
                 user.setLast(rs.getString("last"));
-                user.setType(UserType.valueOf(rs.getString("type")));
+
+                int typeOrdinal = rs.getInt("type");
+                UserType[] types = UserType.values();
+                user.setType(types[typeOrdinal]);
 
                 return user;
             }
@@ -92,29 +91,31 @@ public class UserDaoImpl implements UserDao{
     @Override
     public List<User> getAll() {
         String sql = "select * from \"user\"";
+        List<User> users = new ArrayList<>();
 
         try(Connection c = ConnectionUtil.getConnection();
-            PreparedStatement ps = c.prepareStatement(sql)){
-            ResultSet rs = ps.executeQuery();
-
-            List<User> users = new ArrayList<>();
+            Statement s = c.createStatement()){
+            ResultSet rs = s.executeQuery(sql);
 
             while(rs.next()){
                 User user = new Customer();
+
                 user.setId(rs.getInt("id"));
                 user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("password"));
                 user.setFirst(rs.getString("first"));
                 user.setLast(rs.getString("last"));
-                user.setType(UserType.valueOf(rs.getString("type")));
+
+                int typeOrdinal = rs.getInt("type");
+                UserType[] types = UserType.values();
+                user.setType(types[typeOrdinal]);
 
                 users.add(user);
             }
-            return users;
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return null;
+        return users;
     }
 
     @Override
@@ -135,7 +136,10 @@ public class UserDaoImpl implements UserDao{
                 user.setPassword(rs.getString("password"));
                 user.setFirst(rs.getString("first"));
                 user.setLast(rs.getString("last"));
-                user.setType(UserType.valueOf(rs.getString("type")));
+
+                int typeOrdinal = rs.getInt("type");
+                UserType[] types = UserType.values();
+                user.setType(types[typeOrdinal]);
 
                 return user;
             }
@@ -156,7 +160,7 @@ public class UserDaoImpl implements UserDao{
             ps.setString(2,updatedUser.getPassword());
             ps.setString(3,updatedUser.getFirst());
             ps.setString(4,updatedUser.getLast());
-            ps.setString(5,updatedUser.getType().toString().toLowerCase(Locale.ROOT));
+            ps.setInt(5,updatedUser.getType().ordinal());
             ps.setInt(6,updatedUser.getId());
 
             int rowsAffected = ps.executeUpdate();

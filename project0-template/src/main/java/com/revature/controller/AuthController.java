@@ -2,12 +2,14 @@ package com.revature.controller;
 
 import com.revature.models.User;
 import com.revature.service.UserService;
+import com.revature.util.LoggingSingleton;
 import io.javalin.http.Context;
 import io.javalin.http.ForbiddenResponse;
 import io.javalin.http.UnauthorizedResponse;
 
 public class AuthController {
 
+    LoggingSingleton logger = LoggingSingleton.getLogger();
     private UserService userService = new UserService();
 
     public void authenticateLogin(Context ctx){
@@ -16,11 +18,13 @@ public class AuthController {
 
         User user = userService.getByUserAndPass(username, password);
 
-        if(user == null)
+        if(user == null) {
+            logger.log("WARN", "a failed login attempt was made");
             throw new UnauthorizedResponse("Incorrect username or password");
-        else {
+        }else {
             String simpleToken = user.getType()+"-TOKEN";
             ctx.header("Authorization", simpleToken);
+            logger.log("INFO", "successful login");
             ctx.status(200);
         }
     }

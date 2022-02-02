@@ -3,27 +3,33 @@ package com.revature.controller;
 import com.revature.models.Customer;
 import com.revature.models.User;
 import com.revature.service.UserService;
+import com.revature.util.LoggingSingleton;
 import io.javalin.http.Context;
 
 import java.util.List;
 
 public class UserController {
 
-    private UserService userService = new UserService();
+    LoggingSingleton logger = LoggingSingleton.getLogger();
+    UserService userService = new UserService();
 
     public void handleCreateUser(Context ctx){
         Customer user = ctx.bodyAsClass(Customer.class);
         boolean success = userService.createUser(user);
 
-        if(success)
+        if(success) {
             ctx.status(201);
-        else
+            logger.log("INFO","user has been created");
+        }else{
             ctx.status(400);
+            logger.log("WARN","user failed to be created");
+        }
     }
 
     public void handleGetAll(Context ctx){
         List<User> users = userService.getAll();
         ctx.json(users);
+        logger.log("INFO", "all users were retrieved");
     }
 
     public void handleGetOne(Context ctx){
@@ -31,6 +37,7 @@ public class UserController {
         int id = Integer.parseInt(idParam);
         User user = userService.getById(id);
         ctx.json(user);
+        logger.log("INFO","one user was retrieved");
     }
 
     public void handleUpdate(Context ctx){
@@ -41,10 +48,13 @@ public class UserController {
 
         boolean success = userService.update(updatedUser);
 
-        if(success)
+        if(success) {
             ctx.status(201);
-        else
+            logger.log("INFO","a user's information has been updated");
+        }else{
             ctx.status(400);
+            logger.log("WARN","a user's information failed to update");
+        }
     }
 
 }

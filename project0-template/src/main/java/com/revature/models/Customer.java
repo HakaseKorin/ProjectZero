@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer extends User{
-    private int id;
     private List<Account> accountList = new ArrayList<>();
 
     public Customer() {
@@ -23,14 +22,6 @@ public class Customer extends User{
         super(email, pass, first, last, type);
         this.setId(id);
         this.setAccountList(account);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public List<Account> getAccountList() {
